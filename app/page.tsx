@@ -350,9 +350,9 @@ export default async function Home() {
 
           <div className="mx-auto mt-6 w-full max-w-5xl rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-[0_14px_45px_rgba(0,0,0,0.4)] backdrop-blur">
             <p className="mt-1 text-sm leading-7 text-white/75">
-              I began playing roblox in 2011. I started developing games in June of 2025. I'm from the USA, and I go to University for CS / SWE, on path to get my masters. 
-              I love building socially interactive, party-style games.I&apos;m expanding my arsenal into new genres soon. I'm open to collaborating with
-              experienced developers on future projects, so reach out if you're interested!
+              I began playing roblox in 2011. I started developing games in June of 2025. I&apos;m from the USA, and I go to University for CS / SWE, on path to get my masters. 
+              I love building socially interactive, party-style games. I&apos;m expanding my arsenal into new genres soon. I&apos;m open to collaborating with
+              experienced developers on future projects, so reach out if you&apos;re interested!
             </p>
             <div className="mt-4 flex flex-col gap-2 text-sm font-semibold text-white">
               <p><span className="text-[#4ea3ff]">Primary:</span> Scripter • Project Manager • Game Design</p>
