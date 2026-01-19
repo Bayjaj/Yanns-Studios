@@ -138,29 +138,32 @@ export default async function Home() {
                 </div>
               ))}
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-[#05060d]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-[#05060d] pointer-events-none" />
           </div>
 
           <main className="relative z-10 flex min-h-[100vh] items-center justify-center px-6 pb-28 pt-32 sm:px-10 lg:pt-32">
             <div className="w-full max-w-5xl text-center">
-              <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight drop-shadow-[0_15px_45px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
-                Creating games that players enjoy.
+              <h1
+                className="hero-title mx-auto w-full text-4xl font-bold leading-tight tracking-tight drop-shadow-[0_15px_45px_rgba(0,0,0,0.6)] sm:text-5xl md:text-6xl lg:text-[3.65rem] lg:whitespace-nowrap"
+                data-text="Creating games for players to enjoy"
+              >
+                Creating games for players to enjoy
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl">
-                Providing polished, engaging, and enjoyable gameplay.
+              <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-white/85 sm:text-[1.35rem]">
+                Run on passion by Yann
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
                 <a
                   href="#games"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-[#2d6cf7] px-8 text-sm font-semibold shadow-[0_12px_40px_rgba(45,108,247,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_45px_rgba(45,108,247,0.55)]"
                 >
-                  Our Games
+                  My Games
                 </a>
                 <a
-                  href="#"
+                  href="#find"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-[#0b1020] shadow-[0_10px_35px_rgba(255,255,255,0.12)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(255,255,255,0.16)]"
                 >
-                  Contact / Find Me
+                  Find Me
                 </a>
               </div>
             </div>
@@ -171,8 +174,8 @@ export default async function Home() {
           id="games"
           className="relative z-20 flex flex-col items-center bg-gradient-to-b from-[#05060d] via-[#080b18] to-[#05060d] px-6 pb-20 pt-10 sm:px-10 md:pb-28 md:pt-16 scroll-mt-24"
         >
-          <div className="grid w-full max-w-3xl gap-3 sm:grid-cols-2">
-            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-center shadow-[0_12px_35px_rgba(0,0,0,0.45)] backdrop-blur">
+          <div className="grid w-full max-w-xl gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-6 text-center shadow-[0_12px_35px_rgba(0,0,0,0.45)] backdrop-blur">
               <p className="text-2xl font-bold text-[#4ea3ff]">
                 {totalVisits.toLocaleString()}
               </p>
@@ -180,7 +183,7 @@ export default async function Home() {
                 Total Visits
               </p>
             </div>
-            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-center shadow-[0_12px_35px_rgba(0,0,0,0.45)] backdrop-blur">
+            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-6 text-center shadow-[0_12px_35px_rgba(0,0,0,0.45)] backdrop-blur">
               <p className="text-2xl font-bold text-[#4ea3ff]">
                 {totalPlaying.toLocaleString()}
               </p>
@@ -220,23 +223,23 @@ export default async function Home() {
                         {game.title}
                       </h3>
                       <div className="mt-2 flex items-center gap-4 text-sm text-white/80">
-                        <span className="flex items-center gap-1.5">
+                        <span className="flex items-center gap-1.5 text-white/80">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            className="h-4 w-4"
+                            className="h-4 w-4 text-[#4ea3ff]"
                           >
                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                           </svg>
                           {(game.playing ?? 0).toLocaleString()}
                         </span>
-                        <span className="flex items-center gap-1.5">
+                        <span className="flex items-center gap-1.5 text-white/80">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            className="h-4 w-4"
+                            className="h-4 w-4 text-[#4ea3ff]"
                           >
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
                           </svg>
@@ -273,7 +276,7 @@ export default async function Home() {
 
         <section
           id="find"
-          className="relative z-20 bg-gradient-to-b from-[#05060d] via-[#05060d] to-[#04060f] px-6 pb-16 pt-14 sm:px-10 md:pb-20 md:pt-18 scroll-mt-24"
+          className="relative z-20 bg-gradient-to-b from-[#05060d] via-[#05060d] to-[#04060f] px-6 pb-16 pt-14 sm:px-10 md:pb-20 md:pt-18 scroll-mt-28"
         >
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
@@ -312,18 +315,18 @@ export default async function Home() {
             </a>
 
             <a
-              href="https://discord.com/users/yann4"
+              href="https://discordapp.com/users/337273125332844544"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-[#0f1424]/80 px-6 py-5 text-left shadow-[0_14px_45px_rgba(0,0,0,0.45)] transition hover:-translate-y-1 hover:border-white/20 hover:bg-[#131a2c]"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1c2336] text-white shadow-inner shadow-black/40">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#2d6cf7] text-white shadow-inner shadow-black/40">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="h-6 w-6 text-[#5865f2]"
+                    className="h-6 w-6 text-white"
                   >
                     <path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4Zm-3.3 17.1s-.3-.4-.5-.8c1-.3 1.4-1 1.4-1 .3-.5.4-1 .4-1-.5.4-1 .7-1 .7-.6.3-1.2.4-1.7.3h-.1c-.1 0-.2-.1-.2-.1-.1-.1-.1-.2-.1-.2.1-.1.2-.1.2-.1 1.1-.2 1.6-.6 1.6-.6 0 0 .7-.5 1.2-1.6 0 0 .2-.5.3-1.5 0 0 .1-1.1-.4-2 0 0-.7-1.2-2.3-1.3l-.3-.1s-.2 0-.4.1c-.4-.1-1-.2-1.7-.2-.9 0-1.8.1-2.7.4 0 0-.5-.4-1.1-.5 0 0-.9-.1-2 .7 0 0-.7.8-1 2.5 0 0-.1.9.3 2 0 0 .5 1.1 1.7 1.6 0 0 .5.3 1.6.5 0 0 .1 0 .2.1 0 0 0 .1-.1.2 0 0 0 .1-.2.1-.6.1-1.2 0-1.7-.3 0 0-.4-.3-1-.7 0 0-.1 0 .4 1 0 0 .4.7 1.4 1 0 0-.2.3-.5.8 0 0-.9.1-1.8-.6 0 0-.1 0-.2-.1v.1c0 .1.1 0 .1.1 0 0 .5.7 1.9 1.2 0 0 1.1.4 2.5.5 0 0 .8.1 1.9-.1.4-.1.8-.1 1.2-.3 0 0 .1 0 .1-.1Zm-5.6-4.4c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1 0 .7-.5 1.1-1.1 1.1Zm3.2 0c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1-.1.7-.5 1.1-1.1 1.1Z" />
                   </svg>
@@ -339,6 +342,22 @@ export default async function Home() {
                 →
               </span>
             </a>
+          </div>
+
+          <div className="mx-auto mt-6 text-center text-sm font-semibold text-[#e53935]">
+            *for business inquiries, add and dm me on discord
+          </div>
+
+          <div className="mx-auto mt-6 w-full max-w-5xl rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-[0_14px_45px_rgba(0,0,0,0.4)] backdrop-blur">
+            <p className="mt-1 text-sm leading-7 text-white/75">
+              I began playing roblox in 2011. I started developing games in June of 2025. I'm from the USA, and I go to University for CS / SWE, on path to get my masters. 
+              I love building socially interactive, party-style games.I&apos;m expanding my arsenal into new genres soon. I'm open to collaborating with
+              experienced developers on future projects, so reach out if you're interested!
+            </p>
+            <div className="mt-4 flex flex-col gap-2 text-sm font-semibold text-white">
+              <p><span className="text-[#4ea3ff]">Primary:</span> Scripter • Project Manager • Game Design</p>
+              <p><span className="text-[#4ea3ff]">Secondary:</span> Building • UI • SFX</p>
+            </div>
           </div>
 
           <div className="mx-auto mt-12 flex max-w-6xl items-center justify-between text-xs text-white/60">

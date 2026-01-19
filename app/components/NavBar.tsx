@@ -17,13 +17,12 @@ export function NavBar() {
   useEffect(() => {
     const handleScroll = () => {
       let current: SectionKey = "top";
-      let bestTop = Number.NEGATIVE_INFINITY;
       sections.forEach((section) => {
         const el = document.querySelector<HTMLElement>(section.href);
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        if (rect.top <= 140 && rect.top > bestTop) {
-          bestTop = rect.top;
+        const viewLine = 160; // line below the sticky nav
+        if (rect.top <= viewLine && rect.bottom >= viewLine) {
           current = section.id;
         }
       });
