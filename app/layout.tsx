@@ -21,8 +21,17 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yanns Studios | Roblox Development",
-  description: "Creating polished, engaging Roblox games players love.",
+  title: "Yann's Studios",
+  description: "Founded May 1st, 2025",
+  openGraph: {
+    title: "Yann's Studios",
+    description: "Founded May 1st, 2025",
+    siteName: "Yann's Studios",
+  },
+  twitter: {
+    title: "Yann's Studios",
+    description: "Founded May 1st, 2025",
+  },
 };
 
 export default function RootLayout({

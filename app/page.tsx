@@ -3,6 +3,7 @@ import path from "path";
 import { promises as fs } from "fs";
 import { NavBar } from "./components/NavBar";
 import { RevealSection } from "./components/RevealSection";
+import { HeroCollage } from "./components/HeroCollage";
 
 async function getGalleryImages() {
   try {
@@ -178,19 +179,13 @@ export default async function Home() {
                 <p className="hero-panel__value">{totalPlaying.toLocaleString()}</p>
                 <p className="hero-panel__label">Active Players</p>
               </div>
+              <div>
+                <p className="hero-panel__value">4</p>
+                <p className="hero-panel__label">Games</p>
+              </div>
             </div>
 
-            <div className="hero-collage">
-              {heroPanelImages.map((src, idx) => (
-                <div
-                  key={`${src}-${idx}`}
-                  className="hero-collage__tile"
-                  style={{
-                    backgroundImage: `linear-gradient(150deg, rgba(0,0,0,0.34), rgba(0,0,0,0.08)), url("${src}")`,
-                  }}
-                />
-              ))}
-            </div>
+            <HeroCollage images={heroPanelImages} />
           </aside>
         </div>
 
@@ -315,8 +310,8 @@ export default async function Home() {
         </div>
 
         <div className="mx-auto mt-10 grid w-full max-w-5xl items-stretch gap-5 md:grid-cols-[280px_minmax(0,1fr)]">
-          <div className="reveal reveal-delay-1 rounded-2xl border border-[#fbd8ae]/30 bg-[#4b1d0f]/84 p-5 shadow-[0_20px_42px_rgba(13,3,1,0.4)]">
-            <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-2xl border border-[#fbd8ae]/35 bg-[#5b220f]/70">
+          <div className="reveal reveal-delay-1 flex flex-col items-center justify-start gap-3 p-2">
+            <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-full">
               <Image
                 src="/images/pfp.png"
                 alt="Yanns Studios logo"
@@ -328,14 +323,12 @@ export default async function Home() {
           </div>
 
           <article className="reveal reveal-delay-2 rounded-2xl border border-[#fbd8ae]/30 bg-[#4b1d0f]/84 p-5 shadow-[0_20px_42px_rgba(13,3,1,0.4)]">
-            <p className="text-sm leading-8 text-[#ffe8cc]/84">
-              I began playing roblox in 2011. I started developing games in
-              June of 2025. I&apos;m from the USA, and I go to University for CS /
-              SWE, on path to get my masters. I love building socially
+            <p className="text-sm leading-8 text-[#fff8ee]">
+              I began playing Roblox in 2011, and I&apos;ve loved the platform ever since. I&apos;m from the USA (GMT-5), and I go to University for Computer Science /
+              Software Engineering, on path to get my masters. I love building socially
               interactive, party-style games. I&apos;m expanding my arsenal into
-              new genres soon. I&apos;m open to collaborating with experienced
-              developers on future projects, so reach out if you&apos;re
-              interested!
+              new genres soon. I&apos;m open to collaborating with simillarly experienced
+              developers on future projects, so reach out on discord if you&apos;re  interested!
             </p>
           </article>
         </div>
@@ -351,10 +344,10 @@ export default async function Home() {
               </p>
               <div className="mt-3 grid w-full gap-2 sm:grid-cols-3">
                 <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Scripter
+                  Scripting
                 </span>
                 <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Project Manager
+                  Project Management
                 </span>
                 <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
                   Game Design
@@ -382,6 +375,12 @@ export default async function Home() {
                 <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
                   Animation
                 </span>
+                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
+                  Modeling
+                </span>
+                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
+                  Rigging
+                </span>
               </div>
             </div>
           </div>
@@ -395,30 +394,43 @@ export default async function Home() {
           <div className="section-head__line" />
         </div>
 
-        <div className="mx-auto mt-10 grid w-full max-w-4xl gap-4">
+        <div className="mx-auto mt-10 grid w-full max-w-2xl gap-2">
           <a
             href="https://www.roblox.com/users/20896161/profile"
             target="_blank"
             rel="noopener noreferrer"
-            className="group reveal reveal-delay-1 flex items-center justify-between rounded-2xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-5 py-4 shadow-[0_18px_34px_rgba(13,3,1,0.35)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+            className="group reveal reveal-delay-1 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
           >
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
+            <div className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
                 <Image
                   src="/images/roblox icon.png"
                   alt="Roblox icon"
-                  width={22}
-                  height={22}
+                  width={18}
+                  height={18}
                   className="object-contain"
                 />
               </div>
               <div>
-                <p className="text-lg font-semibold text-[#fff8ef]">Roblox</p>
-                <p className="text-sm text-[#ffe3c0]/78">epictepigss</p>
+                <p className="text-sm font-semibold text-[#fff8ef]">Roblox</p>
+                <p className="text-xs text-[#ffe3c0]/78">epictepigss</p>
               </div>
             </div>
-            <span className="text-lg font-bold text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              -&gt;
+            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
             </span>
           </a>
 
@@ -426,25 +438,77 @@ export default async function Home() {
             href="https://discordapp.com/users/337273125332844544"
             target="_blank"
             rel="noopener noreferrer"
-            className="group reveal reveal-delay-2 flex items-center justify-between rounded-2xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-5 py-4 shadow-[0_18px_34px_rgba(13,3,1,0.35)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+            className="group reveal reveal-delay-2 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
           >
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
+            <div className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
                 <Image
                   src="/images/discord.jpg"
                   alt="Discord icon"
-                  width={22}
-                  height={22}
+                  width={18}
+                  height={18}
                   className="object-contain"
                 />
               </div>
               <div>
-                <p className="text-lg font-semibold text-[#fff8ef]">Discord</p>
-                <p className="text-sm text-[#ffe3c0]/78">yann4</p>
+                <p className="text-sm font-semibold text-[#fff8ef]">Discord</p>
+                <p className="text-xs text-[#ffe3c0]/78">yann4</p>
               </div>
             </div>
-            <span className="text-lg font-bold text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              -&gt;
+            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
+            </span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@Yann16_dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group reveal reveal-delay-3 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
+                <Image
+                  src="/images/youtube.svg"
+                  alt="YouTube icon"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-[#fff8ef]">YouTube</p>
+                <p className="text-xs text-[#ffe3c0]/78">Yann16_dev</p>
+              </div>
+            </div>
+            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
             </span>
           </a>
         </div>
