@@ -23,6 +23,7 @@ type RobloxGame = {
   title: string;
   cover: string;
   url: string;
+  role: string;
   universeId?: number;
   playing?: number;
   visits?: number;
@@ -85,7 +86,7 @@ export default async function Home() {
   const heroPanelImages = [
     "/gallery/att.pr3oTJ2VMwSYr-GS2yvwroWx0fod563u6RexeHFAW64.png.jpg",
     "/gallery/icevix double chase.png",
-    "/gallery/icevix meowl selfie.png",
+    "/gallery/3.png",
     "/gallery/panda1.png",
   ];
 
@@ -95,6 +96,7 @@ export default async function Home() {
       title: "BRAINROT TAG",
       cover: "/gallery/regular2.png",
       url: "https://www.roblox.com/games/131452190170307/BRAINROT-TAG",
+      role: "50%",
       description: "Dodge the brainrot and stay alive in the arena.",
     },
     {
@@ -102,14 +104,32 @@ export default async function Home() {
       title: "Grow Bamboo For Pandas",
       cover: "/gallery/panda1.png",
       url: "https://www.roblox.com/games/108060803651785/Grow-Bamboo-For-Pandas",
+      role: "Solo",
       description: "Grow bamboo and build up your panda sanctuary.",
+    },
+    {
+      placeId: 107091004867390,
+      title: "Race Pandas",
+      cover: "/gallery/3.png",
+      url: "https://www.roblox.com/games/107091004867390/Race-Pandas",
+      role: "50%",
+      description: "Race your panda to the finish line!",
     },
     {
       placeId: 101928524081695,
       title: "Paint or Die",
       cover: "/gallery/paint.png",
       url: "https://www.roblox.com/games/101928524081695/Paint-or-Die",
+      role: "Solo",
       description: "Race for the right color or get caught - pick fast and survive.",
+    },
+    {
+      placeId: 90080785169868,
+      title: "Back To Rooms",
+      cover: "/gallery/rooms to back.png",
+      url: "https://www.roblox.com/games/90080785169868/Back-To-Rooms",
+      role: "35%",
+      description: "Find your way back through the rooms.",
     },
   ];
 
@@ -178,6 +198,10 @@ export default async function Home() {
                 <p className="hero-panel__value">{totalPlaying.toLocaleString()}</p>
                 <p className="hero-panel__label">Active Players</p>
               </div>
+              <div>
+                <p className="hero-panel__value">{games.length}</p>
+                <p className="hero-panel__label">Games</p>
+              </div>
             </div>
 
             <div className="hero-collage">
@@ -237,6 +261,10 @@ export default async function Home() {
             <p className="stat-card__value">{totalPlaying.toLocaleString()}</p>
             <p className="stat-card__label">Active Players</p>
           </div>
+          <div className="stat-card">
+            <p className="stat-card__value">{games.length}</p>
+            <p className="stat-card__label">Games</p>
+          </div>
         </div>
 
         <div className="game-grid">
@@ -255,6 +283,7 @@ export default async function Home() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index === 0}
                 />
+                <span className="game-card__role">{game.role}</span>
               </div>
 
               <div className="game-card__body">
@@ -441,6 +470,33 @@ export default async function Home() {
               <div>
                 <p className="text-lg font-semibold text-[#fff8ef]">Discord</p>
                 <p className="text-sm text-[#ffe3c0]/78">yann4</p>
+              </div>
+            </div>
+            <span className="text-lg font-bold text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
+              -&gt;
+            </span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@Yann4dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group reveal reveal-delay-3 flex items-center justify-between rounded-2xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-5 py-4 shadow-[0_18px_34px_rgba(13,3,1,0.35)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+          >
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5 text-[#ffd9af]"
+                >
+                  <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-[#fff8ef]">YouTube</p>
+                <p className="text-sm text-[#ffe3c0]/78">@Yann4dev</p>
               </div>
             </div>
             <span className="text-lg font-bold text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">

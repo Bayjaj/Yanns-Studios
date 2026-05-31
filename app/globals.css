@@ -346,7 +346,7 @@ body {
 .hero-panel__stats {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.68rem;
 }
 
@@ -495,7 +495,7 @@ body {
   margin-top: 1.7rem;
   display: grid;
   gap: 0.88rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .stat-card {
@@ -529,11 +529,14 @@ body {
 
 .game-grid {
   margin-top: 1.35rem;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.9rem;
 }
 
 .game-card {
+  flex: 1 1 100%;
   overflow: hidden;
   border-radius: 1.35rem;
   border: 1px solid rgba(255, 218, 174, 0.2);
@@ -567,6 +570,23 @@ body {
   inset: 0;
   background: linear-gradient(180deg, transparent 32%, rgba(31, 10, 5, 0.78) 100%);
   pointer-events: none;
+}
+
+.game-card__role {
+  position: absolute;
+  top: 0.62rem;
+  right: 0.62rem;
+  z-index: 2;
+  padding: 0.3rem 0.72rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(12, 4, 2, 0.72);
+  border: 1px solid rgba(255, 218, 174, 0.34);
+  color: #fff4e0;
+  backdrop-filter: blur(8px);
+  line-height: 1.2;
 }
 
 .game-card__body {
@@ -856,8 +876,8 @@ body {
     height: 10.8rem;
   }
 
-  .game-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .game-card {
+    flex: 0 1 calc(50% - 0.45rem);
   }
 
   .footer-row {
@@ -885,8 +905,8 @@ body {
     height: 12.1rem;
   }
 
-  .game-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .game-card {
+    flex: 0 1 calc(33.333% - 0.6rem);
   }
 
   .game-card__media {
