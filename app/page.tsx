@@ -3,7 +3,7 @@ import path from "path";
 import { promises as fs } from "fs";
 import { NavBar } from "./components/NavBar";
 import { RevealSection } from "./components/RevealSection";
-import { HeroCollage } from "./components/HeroCollage";
+import { CountUp } from "./components/CountUp";
 
 async function getGalleryImages() {
   try {
@@ -84,18 +84,11 @@ export default async function Home() {
   ];
 
   const imagesToShow = galleryImages.length ? galleryImages : fallbackImages;
-  const heroPanelImages = [
-    "/gallery/att.pr3oTJ2VMwSYr-GS2yvwroWx0fod563u6RexeHFAW64.png.jpg",
-    "/gallery/icevix double chase.png",
-    "/gallery/3.png",
-    "/gallery/panda1.png",
-  ];
-
   const baseGames: RobloxGame[] = [
     {
       placeId: 131452190170307,
       title: "BRAINROT TAG",
-      cover: "/gallery/regular2.png",
+      cover: "/gameicons/brainrot.png",
       url: "https://www.roblox.com/games/131452190170307/BRAINROT-TAG",
       role: "50%",
       description: "Dodge the brainrot and stay alive in the arena.",
@@ -103,7 +96,7 @@ export default async function Home() {
     {
       placeId: 108060803651785,
       title: "Grow Bamboo For Pandas",
-      cover: "/gallery/panda1.png",
+      cover: "/gameicons/bamboo.png",
       url: "https://www.roblox.com/games/108060803651785/Grow-Bamboo-For-Pandas",
       role: "Solo",
       description: "Grow bamboo and build up your panda sanctuary.",
@@ -111,7 +104,7 @@ export default async function Home() {
     {
       placeId: 107091004867390,
       title: "Race Pandas",
-      cover: "/gallery/3.png",
+      cover: "/gameicons/race.png",
       url: "https://www.roblox.com/games/107091004867390/Race-Pandas",
       role: "50%",
       description: "Race your panda to the finish line!",
@@ -119,7 +112,7 @@ export default async function Home() {
     {
       placeId: 101928524081695,
       title: "Paint or Die",
-      cover: "/gallery/paint.png",
+      cover: "/gameicons/panit or die.png",
       url: "https://www.roblox.com/games/101928524081695/Paint-or-Die",
       role: "Solo",
       description: "Race for the right color or get caught - pick fast and survive.",
@@ -127,7 +120,7 @@ export default async function Home() {
     {
       placeId: 90080785169868,
       title: "Back To Rooms",
-      cover: "/gallery/rooms to back.png",
+      cover: "/gameicons/rooms to back.png",
       url: "https://www.roblox.com/games/90080785169868/Back-To-Rooms",
       role: "35%",
       description: "Find your way back through the rooms.",
@@ -145,7 +138,7 @@ export default async function Home() {
         className="pointer-events-none fixed inset-0 -z-30"
         style={{
           background:
-            "linear-gradient(105deg, #fbba72 0%, #ca5310 30%, #bb4d00 51%, #8f250c 74%, #691e06 100%)",
+            "#bf5014",
         }}
       />
       <div
@@ -153,7 +146,7 @@ export default async function Home() {
         className="pointer-events-none fixed inset-0 -z-20"
         style={{
           background:
-            "radial-gradient(1200px 650px at -10% -10%, rgba(255, 232, 196, 0.16), transparent 66%), radial-gradient(980px 550px at 112% -14%, rgba(255, 186, 107, 0.22), transparent 68%), linear-gradient(180deg, rgba(22, 7, 4, 0.28), rgba(11, 3, 2, 0.6))",
+            "none",
         }}
       />
       <NavBar />
@@ -164,51 +157,48 @@ export default async function Home() {
         <div className="hero-noise" aria-hidden="true" />
 
         <div className="hero-container">
-          <div className="hero-copy reveal">
+          <div className="hero-content reveal">
             <p className="eyebrow">Yanns Studios</p>
-            <h1
-              className="hero-title"
-              data-text="Creating games for players to enjoy"
-            >
+            <h1 className="hero-title">
               Creating games for players to enjoy
             </h1>
             <p className="hero-subtitle">Founded May 1st, 2025</p>
 
-            <div className="hero-actions">
-              <a href="#games" className="btn btn-primary">
-                My Games
-              </a>
-              <a href="#find" className="btn btn-secondary">
-                Find Me
-              </a>
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <p className="hero-stat__value">
+                  <CountUp value={totalVisits} />
+                </p>
+                <p className="hero-stat__label">Total Visits</p>
+              </div>
+              <div className="hero-stat">
+                <p className="hero-stat__value">
+                  <CountUp value={totalPlaying} duration={1200} />
+                </p>
+                <p className="hero-stat__label">Active Players</p>
+              </div>
+              <div className="hero-stat">
+                <p className="hero-stat__value">{games.length}</p>
+                <p className="hero-stat__label">Games</p>
+              </div>
             </div>
           </div>
 
-          <aside className="hero-panel reveal reveal-delay-1">
-            <div className="hero-panel__header">
-              <p className="hero-panel__title">Studio Snapshot</p>
-              <span className="hero-panel__dot" />
+          <div className="hero-arrow" aria-hidden="true">
+            <div style={{ transform: "scaleY(-1)" }}>
+              <Image
+                src="/icons/arrow.png"
+                alt=""
+                width={80}
+                height={80}
+                unoptimized
+                style={{ objectFit: "contain" }}
+              />
             </div>
-
-            <div className="hero-panel__stats">
-              <div>
-                <p className="hero-panel__value">{totalVisits.toLocaleString()}</p>
-                <p className="hero-panel__label">Total Visits</p>
-              </div>
-              <div>
-                <p className="hero-panel__value">{totalPlaying.toLocaleString()}</p>
-                <p className="hero-panel__label">Active Players</p>
-              </div>
-              <div>
-                <p className="hero-panel__value">{games.length}</p>
-                <p className="hero-panel__label">Games</p>
-              </div>
-            </div>
-
-            <HeroCollage images={heroPanelImages} />
-          </aside>
+          </div>
         </div>
 
+        {/* showcase-rail commented out temporarily
         <div className="showcase-rail" aria-hidden="true">
           <div className="marquee-wrap">
             {[0, 1].map((row) => (
@@ -234,8 +224,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
+        */}
       </section>
 
+      <div className="section-band">
       <RevealSection id="games" className="section-block section-games scroll-mt-28">
         <div className="section-head reveal">
           <p className="eyebrow">Collection</p>
@@ -260,8 +252,11 @@ export default async function Home() {
 
         <div className="game-grid">
           {games.map((game, index) => (
-            <article
+            <a
               key={game.placeId}
+              href={game.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="game-card reveal"
               style={{ animationDelay: `${index * 110}ms` }}
             >
@@ -271,7 +266,7 @@ export default async function Home() {
                   alt={game.title}
                   fill
                   className="object-cover object-center transition duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                   priority={index === 0}
                 />
                 <span className="game-card__role">{game.role}</span>
@@ -280,137 +275,80 @@ export default async function Home() {
               <div className="game-card__body">
                 <h3 className="game-card__title">{game.title}</h3>
 
-                <div className="game-card__metrics">
-                  <span className="metric-pill">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                    {(game.playing ?? 0).toLocaleString()}
-                  </span>
-                  <span className="metric-pill">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
-                    </svg>
-                    {(game.visits ?? 0).toLocaleString()}
-                  </span>
+                <div className="game-card__stats">
+                  <div className="game-card__stat-row">
+                    <span className="game-card__stat-label">Playing</span>
+                    <span className="game-card__stat-value game-card__stat-value--live">
+                      {(game.playing ?? 0).toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="game-card__stat-row">
+                    <span className="game-card__stat-label">Visits</span>
+                    <span className="game-card__stat-value">
+                      {(game.visits ?? 0).toLocaleString()}
+                    </span>
+                  </div>
                 </div>
-
-                <p className="game-card__desc">
-                  {clampDescription(game.description)}
-                </p>
-
-                <a
-                  href={game.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-card"
-                >
-                  <Image
-                    src="/images/roblox icon.png"
-                    alt="Roblox icon"
-                    width={18}
-                    height={18}
-                    className="object-contain"
-                  />
-                  View on Roblox
-                </a>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </RevealSection>
+      </div>
 
+      <div className="section-band">
       <RevealSection id="about" className="section-block section-about scroll-mt-28 pt-8">
         <div className="section-head reveal">
           <h2>About Me</h2>
           <div className="section-head__line" />
         </div>
 
-        <div className="mx-auto mt-10 grid w-full max-w-5xl items-stretch gap-5 md:grid-cols-[280px_minmax(0,1fr)]">
-          <div className="reveal reveal-delay-1 flex flex-col items-center justify-start gap-3 p-2">
-            <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-full">
-              <Image
-                src="/images/pfp.png"
-                alt="Yanns Studios logo"
-                fill
-                className="object-cover"
-                sizes="220px"
-              />
-            </div>
+        <div className="about-profile reveal reveal-delay-1">
+          <div className="about-avatar">
+            <Image
+              src="/images/pfp.png"
+              alt="Yanns Studios logo"
+              fill
+              className="object-cover"
+              sizes="220px"
+            />
           </div>
 
-          <article className="reveal reveal-delay-2 rounded-2xl border border-[#fbd8ae]/30 bg-[#4b1d0f]/84 p-5 shadow-[0_20px_42px_rgba(13,3,1,0.4)]">
-            <p className="text-sm leading-8 text-[#fff8ee]">
-              I began playing Roblox in 2011, and I&apos;ve loved the platform ever since. I&apos;m from the USA (GMT-5), and I go to University for Computer Science /
-              Software Engineering, on path to get my masters. I love building socially
-              interactive, party-style games. I&apos;m expanding my arsenal into
-              new genres soon. I&apos;m open to collaborating with simillarly experienced
-              developers on future projects, so reach out on discord if you&apos;re  interested!
-            </p>
-          </article>
+          <p className="about-copy">
+            I began playing Roblox in 2011, and I&apos;ve loved the platform ever since. I&apos;m from the USA (GMT-5), and I go to University for Computer Science /
+            Software Engineering, on path to get my masters. I love building socially
+            interactive, party-style games. I&apos;m expanding my arsenal into
+            new genres soon. I&apos;m open to collaborating with simillarly experienced
+            developers on future projects, so reach out on discord if you&apos;re interested!
+          </p>
         </div>
 
-        <div className="mx-auto mt-8 w-full max-w-5xl">
-          <h3 className="text-center text-2xl font-semibold text-[#fff6ea]">
+        <div className="about-skills reveal reveal-delay-2">
+          <h3 className="about-skills__title">
             Skills
           </h3>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-[#fbd8ae]/30 bg-[#4b1d0f]/84 p-5 shadow-[0_16px_34px_rgba(13,3,1,0.35)]">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ffd9af]">
-                Primary
-              </p>
-              <div className="mt-3 grid w-full gap-2 sm:grid-cols-3">
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Scripting
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Project Management
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Game Design
-                </span>
+          <div className="about-skills__grid">
+            <div className="skill-panel skill-panel--primary">
+              <p className="skill-panel__label">Primary</p>
+              <div className="skill-tags skill-tags--primary">
+                {["Scripting", "Project Management", "Game Design"].map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#fbd8ae]/30 bg-[#4b1d0f]/84 p-5 shadow-[0_16px_34px_rgba(13,3,1,0.35)]">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ffd9af]">
-                Secondary
-              </p>
-              <div className="mt-3 grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Building
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  UI
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  SFX
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  VFX
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Animation
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Modeling
-                </span>
-                <span className="flex min-h-[2.45rem] items-center justify-center rounded-lg border border-[#fbd8ae]/25 bg-[#5a2412]/70 px-3 py-2 text-center text-sm leading-tight font-semibold text-[#fff8ee]">
-                  Rigging
-                </span>
+            <div className="skill-panel">
+              <p className="skill-panel__label">Tools</p>
+              <div className="skill-tags">
+                {["Rojo", "Git", "Figma", "Wally", "Photopea"].map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </RevealSection>
+      </div>
 
       <RevealSection id="find" className="section-block section-find scroll-mt-28">
         <div className="section-head reveal">
@@ -419,153 +357,57 @@ export default async function Home() {
           <div className="section-head__line" />
         </div>
 
-        <div className="mx-auto mt-10 grid w-full max-w-2xl gap-2">
+        <div className="links-strip reveal reveal-delay-1" aria-label="Profile links">
           <a
             href="https://www.roblox.com/users/20896161/profile"
             target="_blank"
             rel="noopener noreferrer"
-            className="group reveal reveal-delay-1 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+            className="links-strip__item"
           >
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
-                <Image
-                  src="/images/roblox icon.png"
-                  alt="Roblox icon"
-                  width={18}
-                  height={18}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-[#fff8ef]">Roblox</p>
-                <p className="text-xs text-[#ffe3c0]/78">epictepigss</p>
-              </div>
-            </div>
-            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14" />
-                <path d="m13 6 6 6-6 6" />
-              </svg>
-            </span>
+            <Image
+              src="/images/roblox icon.png"
+              alt=""
+              width={24}
+              height={24}
+              className="links-strip__icon"
+            />
+            <span className="links-strip__name">epictepigss</span>
           </a>
 
           <a
             href="https://discordapp.com/users/337273125332844544"
             target="_blank"
             rel="noopener noreferrer"
-            className="group reveal reveal-delay-2 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+            className="links-strip__item"
           >
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
-                <Image
-                  src="/images/discord.jpg"
-                  alt="Discord icon"
-                  width={18}
-                  height={18}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-[#fff8ef]">Discord</p>
-                <p className="text-xs text-[#ffe3c0]/78">yann4</p>
-              </div>
-            </div>
-            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14" />
-                <path d="m13 6 6 6-6 6" />
-              </svg>
-            </span>
-          </a>
-
-          <a
-            href="https://www.youtube.com/@Yann16_dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group reveal reveal-delay-3 flex items-center justify-between rounded-xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-3 py-4 shadow-[0_14px_24px_rgba(13,3,1,0.3)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
-                <Image
-                  src="/images/youtube.svg"
-                  alt="YouTube icon"
-                  width={18}
-                  height={18}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-[#fff8ef]">YouTube</p>
-                <p className="text-xs text-[#ffe3c0]/78">Yann16_dev</p>
-              </div>
-            </div>
-            <span className="text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14" />
-                <path d="m13 6 6 6-6 6" />
-              </svg>
-            </span>
+            <Image
+              src="/images/discord.jpg"
+              alt=""
+              width={24}
+              height={24}
+              className="links-strip__icon"
+            />
+            <span className="links-strip__name">yann4</span>
           </a>
 
           <a
             href="https://www.youtube.com/@Yann4dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="group reveal reveal-delay-3 flex items-center justify-between rounded-2xl border border-[#fbd8ae]/30 bg-[#52200f]/80 px-5 py-4 shadow-[0_18px_34px_rgba(13,3,1,0.35)] transition hover:-translate-y-0.5 hover:border-[#fbd8ae]/45 hover:bg-[#5f2612]/85"
+            className="links-strip__item"
           >
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#fbd8ae]/30 bg-gradient-to-br from-[#fbba72]/30 to-[#ca5310]/20">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5 text-[#ffd9af]"
-                >
-                  <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-[#fff8ef]">YouTube</p>
-                <p className="text-sm text-[#ffe3c0]/78">@Yann4dev</p>
-              </div>
-            </div>
-            <span className="text-lg font-bold text-[#ffe3c0]/72 transition group-hover:translate-x-1 group-hover:text-[#fff8ef]">
-              -&gt;
-            </span>
+            <Image
+              src="/images/youtube.svg"
+              alt=""
+              width={24}
+              height={24}
+              className="links-strip__icon"
+            />
+            <span className="links-strip__name">@Yann4dev</span>
           </a>
         </div>
 
-        <div className="mx-auto mt-4 w-full max-w-4xl text-center text-sm font-semibold text-[#ca5310]">
+        <div className="mx-auto mt-4 w-full max-w-4xl text-center text-sm font-semibold text-[#fff4e6]/80">
           *for business inquiries, add and dm me on discord
         </div>
 

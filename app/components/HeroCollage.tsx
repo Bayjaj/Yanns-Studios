@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type HeroCollageProps = {
   images: string[];
@@ -8,6 +9,11 @@ type HeroCollageProps = {
 
 export function HeroCollage({ images }: HeroCollageProps) {
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!activeImage) return;
@@ -19,6 +25,24 @@ export function HeroCollage({ images }: HeroCollageProps) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeImage]);
+
+  const modal = activeImage ? (
+    <div
+      className="hero-collage__modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Studio image preview"
+      onClick={() => setActiveImage(null)}
+    >
+      <div className="hero-collage__modal-backdrop" />
+      <div
+        className="hero-collage__modal-image"
+        style={{
+          backgroundImage: `linear-gradient(160deg, rgba(0,0,0,0.22), rgba(0,0,0,0.08)), url("${activeImage}")`,
+        }}
+      />
+    </div>
+  ) : null;
 
   return (
     <div className="hero-collage">
@@ -39,25 +63,7 @@ export function HeroCollage({ images }: HeroCollageProps) {
         </button>
       ))}
 
-      {activeImage ? (
-        <div
-          className="hero-collage__modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Studio image preview"
-          onClick={() => setActiveImage(null)}
-        >
-          <div
-            className="hero-collage__modal-backdrop"
-          />
-          <div
-            className="hero-collage__modal-image"
-            style={{
-              backgroundImage: `linear-gradient(160deg, rgba(0,0,0,0.22), rgba(0,0,0,0.08)), url("${activeImage}")`,
-            }}
-          />
-        </div>
-      ) : null}
+      {mounted && modal ? createPortal(modal, document.body) : null}
     </div>
   );
 }
